@@ -1,4 +1,4 @@
-package org.joralebl;
+package org.joralebl.jcctorrent;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

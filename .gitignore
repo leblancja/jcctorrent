@@ -40,3 +40,4 @@ build/
 /.direnv
 /.m2
 /.gradle
+/nohup.out

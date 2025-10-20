@@ -1,4 +1,4 @@
-package org.joralebl;
+package org.joralebl.jcctorrent;
 
 import java.io.IOException;
 import javafx.fxml.FXML;

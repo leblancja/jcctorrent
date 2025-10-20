@@ -25,23 +25,28 @@
           NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
             pkgs.stdenv.cc.cc
             pkgs.openssl
+            pkgs.xorg.libXtst
+            pkgs.glib
+            pkgs.xorg.libXxf86vm
+            pkgs.libGL
           ];
           NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
 
           shellHook = ''
-            mkdir -p "$PWD/.m2/bin"
-            mkdir -p "$PWD/.gradle"
+                     mkdir -p "$PWD/.m2/bin"
+                     mkdir -p "$PWD/.gradle"
 
-            export JDK_DIR=$PWD/.jdk
-            export PATH=$PWD/.m2/bin:$PATH
-            export MAVEN_USER_HOME=$PWD/.m2
-            export GRADLE_USER_HOME=$PWD/.gradle
+                     export JDK_DIR=$PWD/.jdk
+                     export PATH=$PWD/.m2/bin:$PATH
+                     export MAVEN_USER_HOME=$PWD/.m2
+                     export GRADLE_USER_HOME=$PWD/.gradle
 
-            ln -sfn ${jdk} "$JDK_DIR"
+                     ln -sfn ${jdk} "$JDK_DIR"
 
-            export JAVA_HOME=$JDK_DIR/lib/openjdk
+                     export JAVA_HOME=$JDK_DIR/lib/openjdk
+            export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
 
-            echo "Java Dev Environment Ready!"
+                     echo "Java Dev Environment Ready!"
           '';
         };
       }
